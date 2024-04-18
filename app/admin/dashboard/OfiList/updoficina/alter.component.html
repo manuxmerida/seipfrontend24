@@ -1,0 +1,118 @@
+<app-header></app-header>
+
+<div class="d-flex justify-content-between" style="margin-top: 20px; margin-left: 20px">
+  <div class="d-flex">
+    <i class="bi bi-house-door" style="font-size: 22px"></i>
+    <i class="bi bi-chevron-right" style="font-size: 22px"></i>
+    <p style="font-family: 'Montserrat'; font-size: 22px">
+      <a href="panel" style="text-decoration: none">Panel</a>
+    </p>
+    <i class="bi bi-chevron-right" style="font-size: 22px"></i>
+    <p style="font-family: 'Montserrat'; font-size: 22px">
+      <a href="oficinas" style="text-decoration: none">Oficina</a>
+    </p>
+    <i class="bi bi-chevron-right" style="font-size: 22px"></i>
+    <p style="font-family: 'Montserrat'; font-size: 22px">
+      <a  style="text-decoration: none"> Editar Oficina</a>
+    </p>
+  </div>
+  <a href="#" style="
+      font-family: 'Montserrat';
+      font-size: 22px;
+      color: blue;
+      margin-right: 15px;
+    ">Manual de usuario</a>
+</div>
+
+<section class="container" style="text-transform: uppercase; ">
+
+  <form [formGroup]="formuOfi" (ngSubmit)="put()" ngNativeValidate>
+    <div style=" font-size: 18px; background-color: black; color: white;" class="text-center "  for="">Editar oficina</div>
+      <div  class="form-group " >
+        <div  class="inplabel">Nombre de la oficina:</div>
+  
+        <input class="text-center" type="text"  maxlength="50"  style="text-transform: uppercase; background-color: rgb(225, 233, 248); " required name="" formControlName="NombreOficina" [(ngModel)]="datosOficina.NombreOficina" id="" class="form-control text-center">
+        <div
+        *ngIf="
+        formuOfi.controls['NombreOficina'].invalid &&
+        (formuOfi.controls['NombreOficina'].dirty || formuOfi.controls['NombreOficina'].touched)
+      ">
+      <div *ngIf="formuOfi.controls['NombreOficina'].errors">
+        <label  class="control-label " for="" style="background-color: #eb0339; color:white; font-size:12px;"> <i class="bi bi-exclamation-circle-fill"></i> El nombre es obligatorio</label>
+      </div>
+      
+        </div>
+      </div>
+
+    <div  class="form-group " >
+      <div class="inplabel">Ubicación:</div>
+
+      <input class="text-center"  maxlength="100" type="text"  style="text-transform: uppercase; background-color: rgb(225, 233, 248); " required name="" formControlName="Ubicacion" [(ngModel)]="datosOficina.Ubicacion" id="" class="form-control text-center">
+      <div
+      *ngIf="
+      formuOfi.controls['Ubicacion'].invalid &&
+      (formuOfi.controls['Ubicacion'].dirty || formuOfi.controls['Ubicacion'].touched)
+    ">
+    <div *ngIf="formuOfi.controls['Ubicacion'].errors">
+      <label  class="control-label " for="" style="background-color: #eb0339; color:white; font-size:12px;"> <i class="bi bi-exclamation-circle-fill"></i> La ubicación es obligatoria</label>
+    </div>
+    
+      </div>
+    </div>
+   
+  <div  class="form-group " >
+    <div  class="inplabel">Telefono:</div>
+
+   
+
+    <input class="text-center" type="number"  min="0" step="1"  maxlength="10"   type="number" min="0" step="1"  maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"   style="text-transform: uppercase; background-color: rgb(225, 233, 248); " required name="" formControlName="Telefono" [(ngModel)]="datosOficina.Telefono" id="" class="form-control text-center">
+    <div
+    *ngIf="
+    formuOfi.controls['Telefono'].invalid &&
+    (formuOfi.controls['Telefono'].dirty || formuOfi.controls['Telefono'].touched)
+  ">
+  <div *ngIf="formuOfi.controls['Telefono'].errors">
+    <label  class="control-label " for="" style="background-color: #eb0339; color:white; font-size:12px;"> <i class="bi bi-exclamation-circle-fill"></i> El telefono es obligatorio</label>
+  </div>
+  
+    </div>
+  </div>
+<div  class="form-group " >
+  <div  class="inplabel">Email:</div>
+
+  <input maxlength="40"  class="text-center" type="text"  style="text-transform:lowercase; background-color: rgb(225, 233, 248); " required name="" formControlName="Email" [(ngModel)]="datosOficina.Email" id="" class="form-control text-center">
+  <div
+  *ngIf="
+  formuOfi.controls['Email'].invalid &&
+  (formuOfi.controls['Email'].dirty || formuOfi.controls['Email'].touched)
+">
+<div *ngIf="formuOfi.controls['Email'].errors">
+  <label  class="control-label " for="" style="background-color: #eb0339; color:white; font-size:12px;"> <i class="bi bi-exclamation-circle-fill"></i> El correo es obligatorio</label>
+</div>
+
+  </div>
+
+</div>
+
+   
+  
+    <div class="row" style="margin-top: 15px;">
+      <div class="col-md-lg">
+        <div class="d-flex justify-content-end" style="margin-bottom: 50px">
+          <button class="btn btn-default"   (click)="cancelar()"  type="button " height="40px;" style="
+              background-color: rgb(110, 109, 109);
+              color: white;
+              margin-right: 20px;
+            ">
+            Cancelar
+          </button>
+          <button class="btn" style="background-color: brown; color: white">
+            Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</section>
+<app-footer></app-footer>
+

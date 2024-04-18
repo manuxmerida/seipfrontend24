@@ -1,0 +1,89 @@
+
+
+
+
+<app-header></app-header>
+<div class="d-flex justify-content-between" style="margin-top: 20px; margin-left: 20px">
+    <div class="d-flex">
+       <i class="bi bi-house-door" style="font-size: 22px"></i>
+       <i class="bi bi-chevron-right" style="font-size: 22px"></i>
+       <p style="font-family: 'Montserrat'; font-size: 22px">
+          <a href="panel" style="text-decoration: none">Panel</a>
+       </p>
+       <i class="bi bi-chevron-right" style="font-size: 22px"></i>
+       <p style="font-family: 'Montserrat'; font-size: 22px">
+          <a href="distrito" style="text-decoration: none">Distritos</a>
+       </p>
+       <i class="bi bi-chevron-right" style="font-size: 22px"></i>
+       <p style="font-family: 'Montserrat'; font-size: 22px">
+          <a  style="text-decoration: none"> Editar Distrito</a>
+       </p>
+    </div>
+    <a href="#" style="
+       font-family: 'Montserrat';
+       font-size: 22px;
+       color: blue;
+       margin-right: 15px;
+     ">Manual de usuario</a>
+ </div>
+ 
+ <section class="container">
+    <div style=" font-size: 18px; background-color: black; color: white;" class="text-center "  for="">EDITAR DISTRITO</div>
+    <form [formGroup]="formuDis" (ngSubmit)="put()" ngNativeValidate>
+       
+
+     
+
+
+
+        <div  class="form-group " style="margin-top: 20px;" >
+            <div class="inplabel" style=" font-size: 14px; color: rgb(32, 31, 31); ;"   for="">Nombre distrito:</div>
+            <input  maxlength="50" class="text-center" type="text"  style="text-transform: uppercase; background-color: rgb(225, 233, 248); " required name="" formControlName="NombreDistrito" [(ngModel)]="datosDistrito.NombreDistrito" id="" class="form-control text-center">
+            <div
+            *ngIf="
+            formuDis.controls['NombreDistrito'].invalid &&
+            (formuDis.controls['NombreDistrito'].dirty || formuDis.controls['NombreDistrito'].touched)
+          ">
+          <div *ngIf="formuDis.controls['NombreDistrito'].errors">
+            <label  class="control-label " for="" style="background-color: #eb0339; color:white; font-size:12px;"> <i class="bi bi-exclamation-circle-fill"></i> El nombre del distrito es obligatorio</label>
+          </div>
+        </div>
+
+        <div class="form-group" >
+            <label  class="control-label inplabel">Región:</label>
+             <select class="form-select " id="" name="Regid" formControlName="Regid" [(ngModel)]="datosDistrito.Regid"
+                #Regid>
+                <option *ngFor="let region of regiones" [value]="region.id">{{ region.NombreRegion}}
+                </option>
+            </select>
+            
+         </div>
+         <div
+         *ngIf="
+         formuDis.controls['Regid'].invalid &&
+         (formuDis.controls['Regid'].dirty || formuDis.controls['Regid'].touched)
+       ">
+       <div *ngIf="formuDis.controls['Regid'].errors">
+         <label  class="control-label " for="" style="background-color: #eb0339; color:white; font-size:12px;"> <i class="bi bi-exclamation-circle-fill"></i> El tipo de especie es obligatorio</label>
+       </div>
+       
+         </div>
+        </div>
+
+
+        <br>
+        <div class="row">
+            <div class="col-md-lg">
+                <div class="d-flex justify-content-end  " style="margin-bottom: 50px;">
+                    <button class="btn btn-default " (click)="cancelar()"  type="button "  height="40px;"
+                       style="background-color: rgb(110, 109, 109); color:white; margin-right: 20px;">Cancelar</button>
+                    <button class="btn  " style="background-color: brown; color:white;">Guardar</button>
+      
+                 </div>
+            </div>
+        </div>
+
+
+    </form>
+</section>
+<app-footer></app-footer>

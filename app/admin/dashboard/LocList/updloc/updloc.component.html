@@ -1,0 +1,83 @@
+<app-header></app-header>
+<div class="d-flex justify-content-between" style="margin-top: 20px; margin-left: 20px">
+    <div class="d-flex">
+        <i class="bi bi-house-door" style="font-size: 22px"></i>
+        <i class="bi bi-chevron-right" style="font-size: 22px"></i>
+        <p style="font-family: 'Montserrat'; font-size: 22px">
+            <a href="panel" style="text-decoration: none">Panel</a>
+        </p>
+        <i class="bi bi-chevron-right" style="font-size: 22px"></i>
+        <p style="font-family: 'Montserrat'; font-size: 22px">
+            <a href="localidad" style="text-decoration: none">Localidad</a>
+        </p>
+        <i class="bi bi-chevron-right" style="font-size: 22px"></i>
+        <p style="font-family: 'Montserrat'; font-size: 22px">
+            <a  style="text-decoration: none"> Editar Localidad</a>
+        </p>
+    </div>
+    <a href="#" style="
+       font-family: 'Montserrat';
+       font-size: 22px;
+       color: blue;
+       margin-right: 15px;
+     ">Manual de usuario</a>
+</div>
+
+<section class="container">
+  
+        <div style=" font-size: 18px; background-color: black; color: white;" class="text-center "  for="">EDITAR PRODUCTO</div>
+    <form [formGroup]="formuLocalidad" (ngSubmit)="put()" ngNativeValidate>
+        <div class="form-group">
+            <label class="inplabel">Nombre de la Localidad</label>
+            <input  maxlength="50" class="text-center" type="text"  style="text-transform: uppercase; background-color: rgb(225, 233, 248); " required name="" formControlName="NombreLocalidad" [(ngModel)]="datosLocalidad.NombreLocalidad" id="" class="form-control text-center">
+            <div *ngIf="
+            formuLocalidad.controls['NombreLocalidad'].invalid &&
+            (formuLocalidad.controls['NombreLocalidad'].dirty || formuLocalidad.controls['NombreLocalidad'].touched)
+          ">
+                  <div *ngIf="formuLocalidad.controls['NombreLocalidad'].errors">
+                     <label  class="control-label " for="" style="background-color: #eb0339; color:white; font-size:12px;"> <i class="bi bi-exclamation-circle-fill"></i> El nombre es obligatorio</label>
+                  </div>
+
+               </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label inplabel">Nombre del Municipio:</label>
+            <select class="form-select " id="" name="Munid" formControlName="Munid" [(ngModel)]="datosLocalidad.Munid"
+                #Munid>
+                <option *ngFor="let municipio of municipios" [value]="municipio.id">{{municipio.NombreMunicipio}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label  inplabel">Nombre del Distrito:</label>
+            <select class="form-select " id="" name="Disid" formControlName="Disid" [(ngModel)]="datosLocalidad.Disid"
+                #Disid>
+                <option *ngFor="let distrito of distritos" [value]="distrito.id">{{ distrito.NombreDistrito}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="control-label inplabel">Nombre de Regiones:</label>
+            <select class="form-select " id="" name="Regid" formControlName="Regid" [(ngModel)]="datosLocalidad.Regid"
+                #Regid>
+                <option *ngFor="let regione of regiones" [value]="regione.id">{{ regione.NombreRegion}}
+                </option>
+            </select>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-lg">
+                <div class="d-flex justify-content-end  " style="margin-bottom: 50px;">
+                    <button class="btn btn-default " type="button " height="40px;" (click)="cancelar()"
+                        style="background-color: rgb(110, 109, 109); color:white; margin-right: 20px;">Cancelar</button>
+                    <button class="btn  " style="background-color: brown; color:white;">Guardar</button>
+
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+</section>
+<app-footer></app-footer>
+
